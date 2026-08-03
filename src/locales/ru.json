@@ -6,17 +6,17 @@
     "projects": {
         "title": "Мои проекты",
         "project1": "LMS Lenno",
-        "project1Description": "Система управления обучением: группы, дисциплины, студенты, синхронизация с Google Calendar. React-фронтенд, бэкенд на микросервисах (Node.js/Express), Supabase, Docker.",
+        "project1Description": "Система управления обучением: группы, студенты, синхронизация с Google Calendar.",
         "project2": "ApplyHub — автооткликер на hh.ru",
-        "project2Description": "Форкнул открытый инструмент для автооткликов на hh.ru и достроил вокруг него систему: интеграция с LinkedIn, авторизация и логи через Telegram, автогенерация сопроводительных писем через AI, деплой на Docker/systemd/cron.",
+        "project2Description": "Форкнул и доработал опенсорсный автооткликер на hh.ru: LinkedIn, Telegram, AI-сопроводительные письма.",
         "project3": "ApplyMate",
-        "project3Description": "Веб-приложение для массовых откликов на hh.ru в один клик. В архиве: hh.ru отключил бесплатный доступ к API, на котором держался бэкенд.",
+        "project3Description": "Веб-приложение для массовых откликов на hh.ru в один клик, в архиве после отзыва API.",
         "project4": "Вклад в Pluely (опенсорс)",
-        "project4Description": "Доработки в опенсорсном AI-ассистенте Pluely: fallback-цепочка на OpenRouter при отказе провайдера, proxy-aware сетевой слой, фикс позиционирования окна под Wayland/XWayland. Открывал PR в апстрим.",
+        "project4Description": "Доработал опенсорсный AI-ассистент Pluely: fallback на OpenRouter и фиксы под Wayland.",
         "project5": "CallPal",
-        "project5Description": "Консольная автоматизация ежедневной сверки в отделе продаж: находит сделки в amoCRM по email и проверяет статус WhatsApp-канала в Revvy через Puppeteer.",
+        "project5Description": "Консольная автоматизация: сверка сделок в amoCRM и статус WhatsApp через Puppeteer.",
         "project6": "Скрипт вычитки часов преподавателей",
-        "project6Description": "Консольный скрипт, который парсит сайт расписания и считает часы преподавателей за период, выгружая результат в CSV для сверки."
+        "project6Description": "Консольный скрипт, который считает часы преподавателей из расписания в CSV."
     },
     "button": {
         "viewCode": "Посмотреть код",

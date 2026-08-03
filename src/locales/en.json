@@ -6,17 +6,17 @@
     "projects": {
         "title": "My Projects",
         "project1": "LMS Lenno",
-        "project1Description": "A learning management system: groups, disciplines, students, Google Calendar sync. React frontend, microservices backend (Node.js/Express), Supabase, Docker.",
+        "project1Description": "A learning management system: groups, students, and Google Calendar sync.",
         "project2": "ApplyHub — hh.ru auto-apply",
-        "project2Description": "Forked an open-source hh.ru auto-apply tool and extended it into a full system: LinkedIn integration, Telegram-based auth and logging, AI-generated cover letters, Docker/systemd/cron deployment.",
+        "project2Description": "Forked and extended an open-source hh.ru auto-apply tool with LinkedIn, Telegram, and AI cover letters.",
         "project3": "ApplyMate",
-        "project3Description": "A web app for one-click bulk applications on hh.ru. Archived: hh.ru revoked the free API access the backend relied on.",
+        "project3Description": "A web app for one-click bulk applications on hh.ru, archived after hh.ru revoked API access.",
         "project4": "Open-source contribution to Pluely",
-        "project4Description": "Contributed fixes to the open-source AI assistant Pluely: an OpenRouter fallback chain for provider outages, a proxy-aware network layer, and a window-positioning fix for Wayland/XWayland. Opened a PR upstream.",
+        "project4Description": "Contributed an OpenRouter fallback chain and Wayland fixes to the open-source AI assistant Pluely.",
         "project5": "CallPal",
-        "project5Description": "Console automation for daily sales-team reconciliation: matches deals in amoCRM by email and checks WhatsApp channel status in Revvy via Puppeteer.",
+        "project5Description": "Console automation that matches amoCRM deals and checks WhatsApp status via Puppeteer.",
         "project6": "Teacher Hours Proofreading Script",
-        "project6Description": "A console script that parses a school timetable website and tallies teacher hours over a period into a CSV file for review."
+        "project6Description": "A console script that tallies teacher hours from a school timetable into CSV."
     },
     "button": {
         "viewCode": "View Code",

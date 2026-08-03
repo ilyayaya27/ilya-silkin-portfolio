@@ -2,35 +2,36 @@ import React, { useState, useEffect } from 'react';
 import '../styles/switchers.css';
 
 const ThemeSwitcher: React.FC = () => {
-    const [isDark, setIsDark] = useState(true);
+    const [isDark, setIsDark] = useState(false);
 
-    const toggleTheme = () => {
+    const setTheme = (dark: boolean) => {
         const body = document.body;
-        const isCurrentlyDark = body.classList.contains('dark');
-        if (isCurrentlyDark) {
-            body.classList.remove('dark');
-            body.classList.add('light');
-        } else {
-            body.classList.remove('light');
-            body.classList.add('dark');
-        }
-        setIsDark(!isCurrentlyDark);
+        body.classList.remove(dark ? 'light' : 'dark');
+        body.classList.add(dark ? 'dark' : 'light');
+        setIsDark(dark);
     };
 
     useEffect(() => {
-        const body = document.body;
-        setIsDark(body.classList.contains('dark'));
+        setIsDark(document.body.classList.contains('dark'));
     }, []);
 
     return (
-        <button
-            className={`switcher ${isDark ? 'on' : 'off'}`}
-            onClick={toggleTheme}
-        >
-            <span className="indicator">☀️</span>
-            <div className="slider"></div>
-            <span className="indicator">🌙</span>
-        </button>
+        <div className="switcher">
+            <button
+                className={!isDark ? 'active' : ''}
+                onClick={() => setTheme(false)}
+                aria-label="Light theme"
+            >
+                ☀️
+            </button>
+            <button
+                className={isDark ? 'active' : ''}
+                onClick={() => setTheme(true)}
+                aria-label="Dark theme"
+            >
+                🌙
+            </button>
+        </div>
     );
 };
 
