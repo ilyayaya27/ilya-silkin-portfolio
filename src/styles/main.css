@@ -26,11 +26,13 @@ h1, h2, h3, .viewCode, .demo {
 body.dark {
     background-color: var(--ink);
     color: var(--paper);
+    --surface: #241a22;
 }
 
 body.light {
     background-color: var(--paper);
     color: var(--ink);
+    --surface: var(--blush);
 }
 
 .switchers {
@@ -82,75 +84,51 @@ body.light {
 }
 
 .project-list {
-    display: flex;
-    flex-direction: column;
-    gap: 100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
 }
 
 .project-card {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 80px;
-    transition: background-color 0.3s;
+    flex-direction: column;
+    gap: 14px;
+    background: var(--surface);
+    border: 2px solid var(--ink);
+    padding: 20px;
 }
 
 .project-info {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
 }
 
 .project-info p {
-    width: 400px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .project-img {
     width: 100%;
-    height: auto;
+    height: 180px;
+    object-fit: cover;
     border: 2px solid var(--ink);
+    display: block;
 }
 
-.wrap-image {
-    position: relative;
-}
-
-.wrap-image::before,
-.wrap-image::after {
-    content: "";
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: -1;
-    border: 2px solid var(--ink);
-    transition: all .25s ease-out;
-}
-
-.wrap-image::before {
-    background-color: var(--pink);
-    top: -15px;
-    left: -15px;
-}
-
-.wrap-image::after {
-    bottom: -15px;
-    right: -15px;
-}
-
-.wrap-image:hover::before {
-    top: 15px;
-    left: 15px;
-}
-
-.wrap-image:hover::after {
-    bottom: 15px;
-    right: 15px;
+.no-image {
+    height: 4px;
+    background: var(--pink);
 }
 
 .btns {
     display: flex;
     gap: 10px;
+    margin-top: auto;
 }
 
 .viewCode, .demo {
@@ -214,19 +192,6 @@ body.light {
         font-size: 1.3rem;
     }
 
-    .project-list {
-        gap: 40px;
-    }
-
-    .project-card {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .project-info p {
-        width: 100%;
-    }
-
     .btns {
         gap: 20px;
     }
@@ -251,17 +216,11 @@ body.light {
         font-size: 1.2rem;
     }
 
-    .project-card {
-        gap: 15px;
-    }
-
     .project-info p {
-        width: 100%;
         font-size: 1.2rem;
     }
 
     .project-info h3 {
-        width: 100%;
         font-size: 1.5rem;
     }
 }

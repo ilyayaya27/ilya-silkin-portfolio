@@ -5,11 +5,15 @@
     position: relative;
     cursor: pointer;
     border: 2px solid var(--ink);
-    outline: none;
     transition: background-color 0.2s;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.switcher:focus-visible {
+    outline: 3px solid var(--pink-deep);
+    outline-offset: 2px;
 }
 
 .switcher.on {

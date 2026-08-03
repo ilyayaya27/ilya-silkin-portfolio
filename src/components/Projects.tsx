@@ -41,11 +41,9 @@ const Projects: React.FC = () => {
             <h2>{t('projects.title')}</h2>
             <div className="project-list">
                 {projects.map((project, index) => (
-                    <div key={index} className={`project-card ${index % 2 === 0 ? 'image-left' : 'image-right'}`}>
+                    <div key={index} className="project-card">
                         {project.img ? (
-                            <div className="wrap-image">
-                                <img src={project.img} alt={project.alt || 'Project Image'} className="project-img" />
-                            </div>
+                            <img src={project.img} alt={project.alt || 'Project Image'} className="project-img" />
                         ) : (
                             <div className="no-image"></div>
                         )}
