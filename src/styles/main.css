@@ -1,23 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400..800&display=swap');
+
+:root {
+    --pink: #ff2e7e;
+    --pink-deep: #c4116a;
+    --ink: #171018;
+    --paper: #ffffff;
+    --blush: #ffeaf3;
+    --line: #f2c6dd;
+}
 
 body, html {
     margin: 0;
     padding: 0;
-    font-family: 'Bebas Neue', 'Oswald';
+    font-family: 'Manrope', sans-serif;
     height: 100%;
     position: relative;
     width: 100%;
 }
 
+h1, h2, h3, .viewCode, .demo {
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 0.02em;
+}
+
 body.dark {
-    background-color: #333;
-    color: #fff;
+    background-color: var(--ink);
+    color: var(--paper);
 }
 
 body.light {
-    background-color: #fff;
-    color: #333;
+    background-color: var(--paper);
+    color: var(--ink);
 }
 
 .switchers {
@@ -96,7 +109,7 @@ body.light {
 .project-img {
     width: 100%;
     height: auto;
-    border: 1px solid #1f1f1f;
+    border: 2px solid var(--ink);
 }
 
 .wrap-image {
@@ -110,12 +123,12 @@ body.light {
     height: 100%;
     position: absolute;
     z-index: -1;
-    border: 2px solid rgb(0, 255, 213);
+    border: 2px solid var(--ink);
     transition: all .25s ease-out;
 }
 
 .wrap-image::before {
-    background-color: rgb(0, 255, 191);
+    background-color: var(--pink);
     top: -15px;
     left: -15px;
 }
@@ -141,19 +154,18 @@ body.light {
 }
 
 .viewCode, .demo {
-    background-color: rgb(0, 255, 191);
-    color: #1f1f1f;
-    border: 1px solid #1f1f1f;
+    background-color: var(--pink);
+    color: var(--paper);
+    border: 2px solid var(--ink);
     padding: 10px 20px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-    font-family: 'Bebas Neue', 'Oswald';
     font-size: 1.2rem;
 }
 
 .viewCode:hover, .demo:hover {
-    background-color: #1f1f1f;
-    color: rgb(0, 255, 191);
+    background-color: var(--ink);
+    color: var(--pink);
 }
 
 ::-webkit-scrollbar {
@@ -162,20 +174,17 @@ body.light {
 }
 
 ::-webkit-scrollbar-track {
-    background: #fff;
+    background: var(--blush);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #888;
-    border: 2px solid #fff;
+    background: var(--pink);
+    border: 2px solid var(--blush);
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: #333;
-}
-
+::-webkit-scrollbar-thumb:hover,
 ::-webkit-scrollbar-thumb:active {
-    background: #333;
+    background: var(--pink-deep);
 }
 
 @media screen and (max-width: 810px) {

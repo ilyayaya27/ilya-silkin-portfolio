@@ -4,7 +4,7 @@ import App from './App';
 import './styles/main.css';
 import './i18n';
 
-document.body.classList.add('dark');
+document.body.classList.add('light');
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
