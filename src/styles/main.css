@@ -120,14 +120,13 @@ body.light {
 }
 
 .nav-btn {
-    width: 34px;
-    height: 34px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     border: 2px solid var(--ink);
     background: var(--pink);
     color: var(--paper);
-    font-size: 1.3rem;
-    line-height: 1;
+    padding: 0;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -135,9 +134,20 @@ body.light {
     transition: background-color 0.2s, color 0.2s;
 }
 
+.nav-btn svg {
+    display: block;
+}
+
 .nav-btn:hover {
     background: var(--ink);
     color: var(--pink);
+}
+
+.nav-btn:focus-visible,
+.viewCode:focus-visible,
+.demo:focus-visible {
+    outline: 3px solid var(--pink-deep);
+    outline-offset: 2px;
 }
 
 .project-list {
@@ -319,28 +329,116 @@ body.light {
     white-space: nowrap;
 }
 
+/* Mobile: natural vertical scroll instead of the desktop one-screen layout */
 @media screen and (max-width: 810px) {
+    body, html {
+        height: auto;
+        overflow: visible;
+    }
+
     .App {
-        padding: 0 10px;
+        height: auto;
+        min-height: 100vh;
+        min-height: 100dvh;
+        overflow: visible;
+        padding: 0 16px;
         box-sizing: border-box;
     }
 
+    .switchers {
+        justify-content: center;
+        padding: 16px 0 0;
+    }
+
+    .switcher button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
     #about {
-        padding: 0 4px;
+        padding: 0;
         min-width: unset;
+        text-align: center;
+        font-size: 1.4rem;
+    }
+
+    #about h2 {
+        margin: 12px 0 4px;
     }
 
     .tech-stack-container {
-        padding: 0 4px;
+        padding: 0;
+        gap: 14px;
+    }
+
+    .tech-item {
+        font-size: 34px;
+    }
+
+    .tech-name {
+        font-size: 11px;
     }
 
     #projects {
-        padding: clamp(8px, 1.5vh, 16px) 4px;
+        padding: 16px 0;
+        flex: none;
+        display: block;
+    }
+
+    .projects-header {
+        margin-bottom: 12px;
+    }
+
+    .nav-btn {
+        width: 44px;
+        height: 44px;
+    }
+
+    .project-list {
+        scroll-snap-type: x mandatory;
+        gap: 16px;
+        margin: 0 -16px;
+        padding: 4px 16px 8px;
+    }
+
+    .project-card {
+        flex: 0 0 82vw;
+        scroll-snap-align: center;
+        padding: 14px;
+        gap: 10px;
+    }
+
+    .project-img,
+    .terminal-card {
+        max-height: none;
+    }
+
+    .project-info h3 {
+        font-size: 1.05rem;
+    }
+
+    .project-info p {
+        font-size: 0.9rem;
+        -webkit-line-clamp: unset;
+    }
+
+    .viewCode, .demo {
+        padding: 10px 18px;
+        font-size: 0.95rem;
+    }
+
+    .terminal-body {
+        font-size: 12px;
     }
 
     .site-footer {
-        padding: clamp(6px, 1.2vh, 12px) 4px;
+        padding: 16px 0 20px;
         flex-direction: column;
         text-align: center;
+        gap: 10px;
+    }
+
+    .footer-cta {
+        font-size: 1.05rem;
     }
 }

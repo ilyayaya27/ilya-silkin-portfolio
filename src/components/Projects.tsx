@@ -83,7 +83,8 @@ const Projects: React.FC = () => {
         if (!list) return;
         const card = list.querySelector('.project-card') as HTMLElement | null;
         const step = (card?.offsetWidth || 300) + 24;
-        list.scrollBy({ left: step * direction, behavior: 'smooth' });
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        list.scrollBy({ left: step * direction, behavior: reduced ? 'auto' : 'smooth' });
     };
 
     return (
@@ -91,8 +92,16 @@ const Projects: React.FC = () => {
             <div className="projects-header">
                 <h2>{t('projects.title')}</h2>
                 <div className="gallery-nav">
-                    <button className="nav-btn" onClick={() => scrollByCard(-1)} aria-label="Previous">‹</button>
-                    <button className="nav-btn" onClick={() => scrollByCard(1)} aria-label="Next">›</button>
+                    <button className="nav-btn" onClick={() => scrollByCard(-1)} aria-label="Previous">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                            <polyline points="15 18 9 12 15 6" />
+                        </svg>
+                    </button>
+                    <button className="nav-btn" onClick={() => scrollByCard(1)} aria-label="Next">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                            <polyline points="9 18 15 12 9 6" />
+                        </svg>
+                    </button>
                 </div>
             </div>
             <div className="project-list" ref={listRef}>
