@@ -16,7 +16,7 @@ const ContactMe: React.FC = () => {
           </a>
         </li>
         <li className="contact-item">
-          <a href="https://github.com/ilyasilkin27" className="contact-link" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/ilyayaya27" className="contact-link" target="_blank" rel="noopener noreferrer">
             <i className="fab fa-github"></i>
           </a>
         </li>
