@@ -6,6 +6,8 @@ const projects = [
         key: 'project1',
         link: 'https://github.com/ilyayaya27/lms-lenno',
         demo: 'https://lms-lenno-frontend.vercel.app',
+        img: require('../fixtures/lms-lenno.png'),
+        alt: 'lms-lenno',
     },
     {
         key: 'project2',
@@ -14,6 +16,8 @@ const projects = [
     {
         key: 'project3',
         link: 'https://github.com/ilyayaya27/applyMate',
+        img: require('../fixtures/applymate.png'),
+        alt: 'applymate',
     },
     {
         key: 'project4',
@@ -38,7 +42,13 @@ const Projects: React.FC = () => {
             <div className="project-list">
                 {projects.map((project, index) => (
                     <div key={index} className={`project-card ${index % 2 === 0 ? 'image-left' : 'image-right'}`}>
-                        <div className="no-image"></div>
+                        {project.img ? (
+                            <div className="wrap-image">
+                                <img src={project.img} alt={project.alt || 'Project Image'} className="project-img" />
+                            </div>
+                        ) : (
+                            <div className="no-image"></div>
+                        )}
                         <div className="project-info">
                             <h3>{t(`projects.${project.key}`)}</h3>
                             <p>{t(`projects.${project.key}Description`)}</p>
