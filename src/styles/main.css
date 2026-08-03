@@ -86,19 +86,23 @@ body.light {
 }
 
 .project-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    display: flex;
     gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    padding: 4px 4px 16px;
 }
 
 .project-card {
+    flex: 0 0 300px;
+    scroll-snap-align: start;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
     background: var(--surface);
     border: 2px solid var(--ink);
     border-radius: 14px;
-    padding: 16px;
+    padding: 14px;
     overflow: hidden;
 }
 
@@ -106,12 +110,23 @@ body.light {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
+}
+
+.project-info h3 {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.project-info p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin: 0;
 }
 
 .project-img {
     width: 100%;
-    height: 160px;
+    height: 220px;
     object-fit: cover;
     object-position: top;
     border-radius: 8px;
@@ -120,7 +135,7 @@ body.light {
 }
 
 .terminal-card {
-    height: 160px;
+    height: 220px;
     background: var(--ink);
     border-radius: 8px;
     border: 2px solid var(--ink);
@@ -178,10 +193,10 @@ body.light {
     color: var(--paper);
     border: 2px solid var(--ink);
     border-radius: 8px;
-    padding: 10px 20px;
+    padding: 8px 14px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-    font-size: 1.2rem;
+    font-size: 0.95rem;
 }
 
 .viewCode:hover, .demo:hover {
@@ -235,19 +250,15 @@ body.light {
         font-size: 1.3rem;
     }
 
-    .btns {
-        gap: 20px;
-    }
-
-    .viewCode, .demo {
-        font-size: 1.2rem;
-        padding: 8px 16px;
-    }
 }
 
 @media screen and (max-width: 480px) {
     .tech-item {
         font-size: 30px;
+    }
+
+    .project-card {
+        flex-basis: 260px;
     }
 
     .viewCode, .demo {
@@ -257,13 +268,5 @@ body.light {
 
     #about {
         font-size: 1.2rem;
-    }
-
-    .project-info p {
-        font-size: 1.2rem;
-    }
-
-    .project-info h3 {
-        font-size: 1.5rem;
     }
 }
