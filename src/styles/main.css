@@ -345,9 +345,19 @@ body.light {
         box-sizing: border-box;
     }
 
+    /* controls at the bottom, within thumb reach; App is a flex column so order pushes them last */
     .switchers {
+        order: 1;
         justify-content: center;
-        padding: 16px 0 0;
+        padding: 4px 0 24px;
+    }
+
+    .gallery-nav {
+        display: none;
+    }
+
+    #about h2 {
+        margin-top: 20px;
     }
 
     .switcher button {
