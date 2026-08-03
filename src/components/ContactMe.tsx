@@ -11,7 +11,7 @@ const ContactMe: React.FC = () => {
           </a>
         </li>
         <li className="contact-item">
-          <a href="https://t.me/ilyasilkin27" className="contact-link" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+          <a href="https://t.me/ilyayaya27" className="contact-link" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
             <i className="fab fa-telegram-plane"></i>
           </a>
         </li>

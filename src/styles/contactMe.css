@@ -9,12 +9,12 @@
   display: flex;
   flex-direction: row;
   list-style: none;
-  padding: 0 20px;
+  padding: 0;
   margin: 0;
 }
 
 .contact-item {
-  margin: 0 15px;
+  margin: 0 10px;
 }
 
 .contact-link {
@@ -35,41 +35,22 @@
 }
 
 @media screen and (max-width: 810px) {
-  .contact-list {
-    flex-direction: column;
-    padding: 0;
-  }
-
-  .contact-item {
-    margin: 10px 0;
-  }
-
   .contact-link {
     font-size: 1.2rem;
     gap: 8px;
   }
 
   .contact-link i {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .contact-list {
-    flex-direction: column;
-    padding: 0;
-  }
-
   .contact-item {
-    margin: 8px 0;
-  }
-
-  .contact-link {
-    font-size: 1rem;
-    gap: 6px;
+    margin: 0 6px;
   }
 
   .contact-link i {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 }
