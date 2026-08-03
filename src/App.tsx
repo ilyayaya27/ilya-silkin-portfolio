@@ -6,6 +6,7 @@ import LanguageSwitcher from './components/LanguageSwitcher';
 import ThemeSwitcher from './components/ThemeSwitcher';
 import './styles/main.css';
 import ContactMe from './components/ContactMe';
+import Footer from './components/Footer';
 
 const App: React.FC = () => {
     return (
@@ -18,6 +19,7 @@ const App: React.FC = () => {
             <About />
             <TechStack />
             <Projects />
+            <Footer />
         </div>
     );
 };

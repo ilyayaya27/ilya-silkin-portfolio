@@ -90,7 +90,12 @@ body.light {
     gap: 24px;
     overflow-x: auto;
     scroll-snap-type: x proximity;
-    padding: 4px 4px 16px;
+    padding: 4px;
+    scrollbar-width: none;
+}
+
+.project-list::-webkit-scrollbar {
+    display: none;
 }
 
 .project-card {
@@ -269,4 +274,28 @@ body.light {
     #about {
         font-size: 1.2rem;
     }
+}
+
+.site-footer {
+    margin-top: auto;
+    padding: 48px 10% 32px;
+    border-top: 2px solid var(--ink);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+}
+
+.footer-cta {
+    font-family: 'Anton', sans-serif;
+    letter-spacing: 0.02em;
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.footer-rights {
+    font-size: 0.85rem;
+    opacity: 0.6;
+    margin: 0;
 }
