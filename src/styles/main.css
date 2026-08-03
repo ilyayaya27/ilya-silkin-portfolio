@@ -150,7 +150,7 @@ body.light {
     scrollbar-width: none;
     flex: 1;
     min-height: 0;
-    align-items: stretch;
+    align-items: center;
 }
 
 .project-list::-webkit-scrollbar {
@@ -158,7 +158,7 @@ body.light {
 }
 
 .project-card {
-    flex: 0 0 clamp(220px, 26vw, 300px);
+    flex: 0 0 clamp(240px, 28vw, 340px);
     scroll-snap-align: start;
     display: flex;
     flex-direction: column;
@@ -194,8 +194,9 @@ body.light {
 
 .project-img {
     width: 100%;
-    flex: 1 1 auto;
-    min-height: 0;
+    flex: 0 0 auto;
+    aspect-ratio: 3 / 2;
+    max-height: 30vh;
     object-fit: cover;
     object-position: top;
     border-radius: 8px;
@@ -204,8 +205,9 @@ body.light {
 }
 
 .terminal-card {
-    flex: 1 1 auto;
-    min-height: 0;
+    flex: 0 0 auto;
+    aspect-ratio: 3 / 2;
+    max-height: 30vh;
     background: var(--ink);
     border-radius: 8px;
     border: 2px solid var(--ink);

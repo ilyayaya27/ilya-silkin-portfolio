@@ -5,7 +5,6 @@ import Projects from './components/Projects';
 import LanguageSwitcher from './components/LanguageSwitcher';
 import ThemeSwitcher from './components/ThemeSwitcher';
 import './styles/main.css';
-import ContactMe from './components/ContactMe';
 import Footer from './components/Footer';
 
 const App: React.FC = () => {
@@ -14,7 +13,6 @@ const App: React.FC = () => {
             <div className="switchers">
                 <LanguageSwitcher />
                 <ThemeSwitcher />
-                <ContactMe />
             </div>
             <About />
             <TechStack />
