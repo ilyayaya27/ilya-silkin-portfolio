@@ -16,6 +16,7 @@ body, html {
     height: 100%;
     position: relative;
     width: 100%;
+    overflow: hidden;
 }
 
 h1, h2, h3, .viewCode, .demo {
@@ -40,58 +41,116 @@ body.light {
     flex-wrap: wrap;
     justify-content: flex-end;
     align-items: center;
-    gap: 16px;
+    gap: clamp(8px, 1.5vh, 16px);
     width: 100%;
-    padding: 16px 10% 0;
+    padding: clamp(8px, 1.5vh, 16px) 10% 0;
     box-sizing: border-box;
+    flex-shrink: 0;
 }
 
 .App {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
 }
 
 #about {
     padding: 0 10%;
-    font-size: 2rem;
-    min-width: 600px;
+    font-size: clamp(1.3rem, 2.6vh, 2rem);
+    flex-shrink: 0;
+}
+
+#about h2 {
+    margin: clamp(4px, 1vh, 12px) 0;
+}
+
+#about p {
+    margin: 0 0 clamp(6px, 1vh, 12px);
 }
 
 .tech-stack-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: clamp(10px, 2vw, 20px);
     padding: 0 10%;
+    flex-shrink: 0;
 }
 
 .tech-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 60px;
+    font-size: clamp(24px, 4vh, 44px);
     color: #333;
 }
 
 .tech-name {
-    margin-top: 10px;
-    font-size: 16px;
+    margin-top: 6px;
+    font-size: clamp(10px, 1.3vh, 14px);
 }
 
 #projects {
-    padding: 20px 10%;
+    padding: clamp(8px, 1.5vh, 16px) 10%;
     font-size: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    box-sizing: border-box;
+}
+
+.projects-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    margin-bottom: clamp(6px, 1vh, 14px);
+}
+
+.projects-header h2 {
+    margin: 0;
+}
+
+.gallery-nav {
+    display: flex;
+    gap: 8px;
+}
+
+.nav-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 2px solid var(--ink);
+    background: var(--pink);
+    color: var(--paper);
+    font-size: 1.3rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-btn:hover {
+    background: var(--ink);
+    color: var(--pink);
 }
 
 .project-list {
     display: flex;
     gap: 24px;
     overflow-x: auto;
+    overflow-y: hidden;
     scroll-snap-type: x proximity;
     padding: 4px;
     scrollbar-width: none;
+    flex: 1;
+    min-height: 0;
+    align-items: stretch;
 }
 
 .project-list::-webkit-scrollbar {
@@ -99,39 +158,44 @@ body.light {
 }
 
 .project-card {
-    flex: 0 0 300px;
+    flex: 0 0 clamp(220px, 26vw, 300px);
     scroll-snap-align: start;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: clamp(4px, 1vh, 8px);
     background: var(--surface);
     border: 2px solid var(--ink);
     border-radius: 14px;
-    padding: 14px;
+    padding: clamp(8px, 1.5vh, 14px);
     overflow: hidden;
 }
 
 .project-info {
-    flex: 1;
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
 }
 
 .project-info h3 {
-    font-size: 1.1rem;
+    font-size: clamp(0.85rem, 1.6vh, 1.1rem);
     margin: 0;
 }
 
 .project-info p {
-    font-size: 0.9rem;
-    line-height: 1.4;
+    font-size: clamp(0.7rem, 1.35vh, 0.9rem);
+    line-height: 1.35;
     margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .project-img {
     width: 100%;
-    height: 220px;
+    flex: 1 1 auto;
+    min-height: 0;
     object-fit: cover;
     object-position: top;
     border-radius: 8px;
@@ -140,14 +204,15 @@ body.light {
 }
 
 .terminal-card {
-    height: 220px;
+    flex: 1 1 auto;
+    min-height: 0;
     background: var(--ink);
     border-radius: 8px;
     border: 2px solid var(--ink);
-    padding: 12px 14px;
+    padding: clamp(8px, 1.2vh, 14px);
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
     overflow: hidden;
     box-sizing: border-box;
 }
@@ -172,8 +237,8 @@ body.light {
 
 .terminal-body {
     font-family: 'Courier New', monospace;
-    font-size: 12px;
-    line-height: 1.6;
+    font-size: clamp(9px, 1.3vh, 12px);
+    line-height: 1.5;
     color: var(--paper);
     overflow: hidden;
 }
@@ -189,8 +254,8 @@ body.light {
 
 .btns {
     display: flex;
-    gap: 10px;
-    margin-top: auto;
+    gap: 8px;
+    flex-shrink: 0;
 }
 
 .viewCode, .demo {
@@ -198,10 +263,10 @@ body.light {
     color: var(--paper);
     border: 2px solid var(--ink);
     border-radius: 8px;
-    padding: 8px 14px;
+    padding: clamp(5px, 1vh, 8px) 14px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-    font-size: 0.95rem;
+    font-size: clamp(0.75rem, 1.4vh, 0.95rem);
 }
 
 .viewCode:hover, .demo:hover {
@@ -228,74 +293,52 @@ body.light {
     background: var(--pink-deep);
 }
 
-@media screen and (max-width: 810px) {
-    .App {
-        align-items: center;
-        justify-content: flex-start;
-        padding: 20px;
-    }
-
-    #about {
-        padding: 0 5%;
-        font-size: 1.5rem;
-        min-width: unset;
-    }
-
-    .tech-stack-container {
-        padding: 0 5%;
-        gap: 15px;
-    }
-
-    .tech-item {
-        font-size: 40px;
-    }
-
-    #projects {
-        padding: 20px 5%;
-        font-size: 1.3rem;
-    }
-
-}
-
-@media screen and (max-width: 480px) {
-    .tech-item {
-        font-size: 30px;
-    }
-
-    .project-card {
-        flex-basis: 260px;
-    }
-
-    .viewCode, .demo {
-        font-size: 0.9rem;
-        padding: 6px 12px;
-    }
-
-    #about {
-        font-size: 1.2rem;
-    }
-}
-
 .site-footer {
-    margin-top: auto;
-    padding: 48px 10% 32px;
+    flex-shrink: 0;
+    padding: clamp(6px, 1.2vh, 12px) 10%;
     border-top: 2px solid var(--ink);
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 16px;
-    text-align: center;
+    justify-content: space-between;
+    gap: 12px;
 }
 
 .footer-cta {
     font-family: 'Anton', sans-serif;
     letter-spacing: 0.02em;
-    font-size: 1.3rem;
+    font-size: clamp(0.8rem, 1.6vh, 1.1rem);
     margin: 0;
 }
 
 .footer-rights {
-    font-size: 0.85rem;
+    font-size: clamp(0.65rem, 1.1vh, 0.8rem);
     opacity: 0.6;
     margin: 0;
+    white-space: nowrap;
+}
+
+@media screen and (max-width: 810px) {
+    .App {
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+
+    #about {
+        padding: 0 4px;
+        min-width: unset;
+    }
+
+    .tech-stack-container {
+        padding: 0 4px;
+    }
+
+    #projects {
+        padding: clamp(8px, 1.5vh, 16px) 4px;
+    }
+
+    .site-footer {
+        padding: clamp(6px, 1.2vh, 12px) 4px;
+        flex-direction: column;
+        text-align: center;
+    }
 }

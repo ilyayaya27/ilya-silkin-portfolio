@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const TerminalPreview: React.FC<{ lines: string[] }> = ({ lines }) => (
@@ -76,11 +76,26 @@ const projects = [
 
 const Projects: React.FC = () => {
     const { t } = useTranslation();
+    const listRef = useRef<HTMLDivElement>(null);
+
+    const scrollByCard = (direction: 1 | -1) => {
+        const list = listRef.current;
+        if (!list) return;
+        const card = list.querySelector('.project-card') as HTMLElement | null;
+        const step = (card?.offsetWidth || 300) + 24;
+        list.scrollBy({ left: step * direction, behavior: 'smooth' });
+    };
 
     return (
         <section id="projects">
-            <h2>{t('projects.title')}</h2>
-            <div className="project-list">
+            <div className="projects-header">
+                <h2>{t('projects.title')}</h2>
+                <div className="gallery-nav">
+                    <button className="nav-btn" onClick={() => scrollByCard(-1)} aria-label="Previous">‹</button>
+                    <button className="nav-btn" onClick={() => scrollByCard(1)} aria-label="Next">›</button>
+                </div>
+            </div>
+            <div className="project-list" ref={listRef}>
                 {projects.map((project, index) => (
                     <div key={index} className="project-card">
                         {project.img ? (
