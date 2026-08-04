@@ -1,16 +1,11 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const TerminalPreview: React.FC<{ lines: string[] }> = ({ lines }) => (
     <div className="terminal-card">
-        <div className="terminal-dots">
-            <span></span><span></span><span></span>
-        </div>
-        <div className="terminal-body">
-            {lines.map((line, i) => (
-                <div key={i} className={`terminal-line ${i === 0 ? 'prompt' : ''}`}>{line}</div>
-            ))}
-        </div>
+        {lines.map((line, i) => (
+            <div key={i} className={`terminal-line ${i === 0 ? 'prompt' : ''}`}>{line}</div>
+        ))}
     </div>
 );
 
@@ -74,59 +69,62 @@ const projects = [
     },
 ];
 
+const total = projects.length;
+
 const Projects: React.FC = () => {
     const { t } = useTranslation();
-    const listRef = useRef<HTMLDivElement>(null);
+    const [index, setIndex] = useState(0);
+    const idx = ((index % total) + total) % total;
+    const current = projects[idx];
 
-    const scrollByCard = (direction: 1 | -1) => {
-        const list = listRef.current;
-        if (!list) return;
-        const card = list.querySelector('.project-card') as HTMLElement | null;
-        const step = (card?.offsetWidth || 300) + 24;
-        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        list.scrollBy({ left: step * direction, behavior: reduced ? 'auto' : 'smooth' });
-    };
+    useEffect(() => {
+        const onKey = (e: KeyboardEvent) => {
+            if (e.key === 'ArrowLeft') setIndex((i) => i - 1);
+            if (e.key === 'ArrowRight') setIndex((i) => i + 1);
+        };
+        window.addEventListener('keydown', onKey);
+        return () => window.removeEventListener('keydown', onKey);
+    }, []);
 
     return (
         <section id="projects">
             <div className="projects-header">
                 <h2>{t('projects.title')}</h2>
-                <div className="gallery-nav">
-                    <button className="nav-btn" onClick={() => scrollByCard(-1)} aria-label="Previous">
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                            <polyline points="15 18 9 12 15 6" />
-                        </svg>
-                    </button>
-                    <button className="nav-btn" onClick={() => scrollByCard(1)} aria-label="Next">
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                            <polyline points="9 18 15 12 9 6" />
-                        </svg>
-                    </button>
-                </div>
+                <div className="projects-counter">{idx + 1} / {total}</div>
             </div>
-            <div className="project-list" ref={listRef}>
-                {projects.map((project, index) => (
-                    <div key={index} className="project-card">
-                        {project.img ? (
-                            <img src={project.img} alt={project.alt || 'Project Image'} className="project-img" />
-                        ) : (
-                            <TerminalPreview lines={project.terminal || []} />
-                        )}
-                        <div className="project-info">
-                            <h3>{t(`projects.${project.key}`)}</h3>
-                            <p>{t(`projects.${project.key}Description`)}</p>
-                            <div className="btns">
-                                <a href={project.link} target="_blank" rel="noopener noreferrer">
-                                    <button className='viewCode'>{t('button.viewCode')}</button>
+            <div className="carousel">
+                <button className="nav-btn" onClick={() => setIndex((i) => i - 1)} aria-label="Previous">←</button>
+                <div className="project-card">
+                    {current.img ? (
+                        <img src={current.img} alt={current.alt || 'Project screenshot'} className="project-img" />
+                    ) : (
+                        <TerminalPreview lines={current.terminal || []} />
+                    )}
+                    <div className="project-info">
+                        <h3>{t(`projects.${current.key}`)}</h3>
+                        <p>{t(`projects.${current.key}Description`)}</p>
+                        <div className="btns">
+                            <a href={current.link} target="_blank" rel="noopener noreferrer" className="viewCode">
+                                {t('button.viewCode')}
+                            </a>
+                            {current.demo && (
+                                <a href={current.demo} target="_blank" rel="noopener noreferrer" className="demo">
+                                    {t('button.demo')}
                                 </a>
-                                {project.demo && (
-                                    <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                                        <button className='demo'>{t('button.demo')}</button>
-                                    </a>
-                                )}
-                            </div>
+                            )}
                         </div>
                     </div>
+                </div>
+                <button className="nav-btn" onClick={() => setIndex((i) => i + 1)} aria-label="Next">→</button>
+            </div>
+            <div className="dots">
+                {projects.map((_, i) => (
+                    <button
+                        key={i}
+                        className={`dot ${i === idx ? 'active' : ''}`}
+                        onClick={() => setIndex(i)}
+                        aria-label={`Go to project ${i + 1}`}
+                    />
                 ))}
             </div>
         </section>

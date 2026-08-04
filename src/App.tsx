@@ -3,22 +3,18 @@ import About from './components/About';
 import TechStack from './components/TechStack';
 import Projects from './components/Projects';
 import LanguageSwitcher from './components/LanguageSwitcher';
-import ThemeSwitcher from './components/ThemeSwitcher';
 import './styles/main.css';
-import ContactMe from './components/ContactMe';
 import Footer from './components/Footer';
 
 const App: React.FC = () => {
     return (
         <div className="App">
-            {/* top-right toggles on desktop; fixed bottom app bar on mobile (contacts only visible there) */}
-            <div className="switchers">
+            <div className="grain" aria-hidden="true" />
+            <div className="stripe-bar" aria-hidden="true" />
+            <nav className="site-nav">
+                <div className="brand">Ilya Silkin<span className="brand-accent">_</span></div>
                 <LanguageSwitcher />
-                <ThemeSwitcher />
-                <div className="bar-contacts">
-                    <ContactMe />
-                </div>
-            </div>
+            </nav>
             <About />
             <TechStack />
             <Projects />

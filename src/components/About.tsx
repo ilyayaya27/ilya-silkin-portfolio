@@ -6,10 +6,8 @@ const About: React.FC = () => {
 
     return (
         <section id="about">
-            <h2>{t('about.name')}</h2>
-            <p>
-                <b>{t('about.description')}</b>
-            </p>
+            <h1>{t('about.name')}</h1>
+            <div className="eyebrow">{t('about.eyebrow')}</div>
         </section>
     );
 };

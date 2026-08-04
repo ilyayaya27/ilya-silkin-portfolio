@@ -1,7 +1,7 @@
 {
     "about": {
         "name": "Ilya Silkin",
-        "description": "Developer"
+        "eyebrow": "Developer"
     },
     "projects": {
         "title": "My Projects",
@@ -23,7 +23,6 @@
         "demo": "View Live"
     },
     "footer": {
-        "cta": "Open to new projects — reach out",
-        "rights": "Ilya Silkin"
+        "cta": "Open to new projects — reach out"
     }
 }
